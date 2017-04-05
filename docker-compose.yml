@@ -1,0 +1,70 @@
+
+version: '2'
+
+services:
+  site:
+    build: 
+      context: ./site
+      dockerfile: Dockerfile
+    command: gunicorn --bind 0.0.0.0:8000 --reload --timeout 600 --access-logfile - main.wsgi
+    ports:
+     - "8000:8000"
+    volumes:
+     - ./site:/var/www
+     - ./logs:/var/www/logs
+    environment:
+     - DEBUG=1
+     - DJANGO_CONFIGURATION=Dev
+     - DJANGO_SETTINGS_MODULE=main.settings
+     - PYTHONUNBUFFERED=1
+    links:
+     - redis
+     - memcached
+     - mysql
+     - phpmyadmin
+
+  mysql:
+    image: mysql:latest
+    ports:
+     - "3306"
+    volumes:
+     - ./mysql/data:/var/lib/mysql
+     - ./mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+    environment:
+     - MYSQL_ROOT_PASSWORD=1
+     - MYSQL_DATABASE=project
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+     - "9000:80"
+    links:
+     - mysql:db
+
+  redis:
+    build: ./redis
+    ports:
+     - "6379"
+    volumes:
+     - /home/fork/web/cement/cement/redis/data:/data
+
+  memcached:
+    image: memcached:latest
+    ports:
+     - "11211"
+
+  gulp:
+    image: project_gulp
+    build: ./gulp/
+    command: npm run watch
+    volumes:
+     - ./site/:/opt/project/
+    ports:
+     - "35729:35729"
+
+  gulp-build:
+    image: project_gulp
+    build: ./gulp/
+    command: npm run build
+    volumes:
+     - ./site:/opt/project/
