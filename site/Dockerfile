@@ -1,4 +1,4 @@
-FROM python3:latest
+FROM python:3.5
 LABEL Name=project Version=0.0.1 
 
 RUN apt-get update && \
