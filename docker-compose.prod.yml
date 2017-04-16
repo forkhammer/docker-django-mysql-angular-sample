@@ -3,9 +3,17 @@ version: '2'
 
 services:
   site:
-    image: project:latest
-    build:
-      context: .
+    build: 
+      context: ./site
       dockerfile: Dockerfile
+    command: gunicorn --bind 0.0.0.0:8000 main.wsgi
     ports:
-      - 8000:8000
+     - "8000"
+    volumes:
+     - ./site:/var/www
+     - ../logs:/var/www/logs
+    environment:
+     - DEBUG=0
+     - DJANGO_CONFIGURATION=Prod
+     - DJANGO_SETTINGS_MODULE=main.settings
+     - PYTHONUNBUFFERED=1
