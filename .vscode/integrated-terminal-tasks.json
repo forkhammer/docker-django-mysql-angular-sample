@@ -1,0 +1,38 @@
+{
+    "Run site": {
+        "cmd": "docker-compose",
+        "args": ["up", "site"]
+    },
+    "Run admin": {
+        "cmd": "docker-compose",
+        "args": ["up", "admin"]
+    },
+    "Celery": {
+        "cmd": "docker-compose",
+        "args": ["up", "celery"]
+    },
+    "Webpack watch": {
+        "cmd": "docker-compose",
+        "args": ["up", "webpack"]
+    },
+    "Build": {
+        "cmd": "docker-compose",
+        "args": ["up", "build"]
+    },
+    "Deploy": {
+        "cmd": "fab",
+        "args": ["deploy"]
+    },
+    "Stop all": {
+        "cmd": "docker-compose",
+        "args": ["stop"]
+    },
+    "Shell": {
+        "cmd": "docker-compose",
+        "args": ["run", "site", "bash"]
+    },
+    "Django Shell": {
+        "cmd": "docker-compose",
+        "args": ["run", "site", "python", "manage.py", "shell"]
+    }
+}
