@@ -36,7 +36,7 @@ Unidecode
 wrapt
 django-celery-results
 django-bootstrap-pagination
-django-breadcrumbs
+django-breadcrumbs==1.1.4a1
 django-js-reverse
 python-memcached
 django-annoying
