@@ -1,0 +1,177 @@
+@import 'font';
+@import 'color';
+@import 'elements';
+@import 'smart-grid.less';
+
+body {
+    font-family: @font;
+    color: @font-color;
+}
+
+h1 {
+    font: bold 22px/24px @font;
+    text-transform: uppercase;
+}
+
+h2 {
+    font: bold 20px/22px @font;
+    text-transform: uppercase;
+}
+
+h3 {
+    font: bold 16px/18px @font;
+    text-transform: uppercase;
+}
+
+a {
+    color: @primary-color;
+
+    &:hover, &.hover {
+        color: @secondary-color;
+        text-decoration: underline;
+    }
+}
+
+.btn {
+    padding: 10px 12px;
+
+    &.btn-sm {
+        font: bold 10px/13px @font;
+        padding: 6px 10px;
+    }
+
+    &.btn-lg {
+        font: bold 16px/18px @font;
+        padding: 13px 16px;
+    }
+}
+
+.btn-primary {
+    .rounded(30px);
+    background: @secondary-color;
+    border: none;
+    text-transform: uppercase;
+    font: bold 11px/13px @font;
+    transition-duration: 0.3s;
+
+    &:hover, &:focus {
+        border: none;
+        background: darken(@secondary-color, 5%);
+
+        &[disabled] {
+            background: @grey500;
+        }
+    }
+
+    &:active, &:active:hover, &:active:focus {
+        border: none;
+        background: darken(@secondary-color, 15%);
+        .box-shadow(none);
+    }
+}
+
+.btn-default {
+    .rounded(30px);
+    background: #fff;
+    text-transform: uppercase;
+    font: bold 11px/13px @font;
+    transition-duration: 0.3s;
+
+    &:hover, &:focus {
+        background: darken(#fff, 5%);
+
+        &[disabled] {
+            background: @grey500;
+        }
+    }
+
+    &:active, &:active:hover, &:active:focus {
+        background: darken(#fff, 15%);
+        .box-shadow(none);
+    }
+}
+
+
+input[type='checkbox'],
+input[type='radio'] {
+    display: none;
+}
+
+input[type='checkbox'] + label,
+input[type='radio'] + label {
+    font-weight: normal;
+    padding: 3px 7px 3px 30px;
+    position: relative;
+    margin: 5px 0;
+    overflow: hidden;
+    min-height: 25px;
+
+    &:after {
+        display: block;
+        width: 24px;
+        height: 24px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: " ";
+        border: 1px solid @grey100;
+        .rounded(100%);
+        background: #fff;
+        z-index: 1;
+    }
+
+    &:before {
+        display: block;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: 7px;
+        left: 7px;
+        content: " ";
+        .transition-duration(0.3s);
+        background: @grey300;
+        .rounded(100%);
+        z-index: 2;
+    }
+}
+
+input[type='checkbox']:checked + label,
+input[type='radio']:checked + label {
+    border-color: lighten(@secondary-color, 40%);
+
+    &:before {
+        background: @secondary-color;
+    }
+
+    &:after {
+        border-color: @secondary-color;
+    }
+}
+
+
+.form-control {
+    .rounded(20px);
+    padding: 4px 12px;
+    box-shadow: inset 1px 1px 3px fade(#000, 30%);
+    border-color: @grey100;
+
+    &:focus {
+        box-shadow: inset 2px 2px 3px fade(#000, 25%);
+        border-color: @grey100;
+    }
+}
+
+form {
+    label {
+        text-transform: uppercase;
+        margin: 10px 0 0 0;
+    }
+}
+
+.container {
+    .wrapper();
+}
+
+.row {
+    .row-flex();
+}
