@@ -53,18 +53,19 @@ services:
     ports:
      - "11211"
 
-  gulp:
-    image: project_gulp
-    build: ./gulp/
-    command: npm run watch
+  webpack:
+    image: project_webpack
+    build: ./webpack
+    command: npm run devserver
     volumes:
      - ./site/:/opt/project/
     ports:
-     - "35729:35729"
+     - "8080:8080"
 
-  gulp-build:
-    image: project_gulp
-    build: ./gulp/
+
+  build:
+    image: aks_webpack
+    build: ./webpack
     command: npm run build
     volumes:
-     - ./site:/opt/project/
+     - ./site/:/opt/project/
