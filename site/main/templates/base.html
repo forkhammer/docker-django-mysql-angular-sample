@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load blocks %}
+<html lang="ru" ng-app="aks">
+<head>
+	{% block meta %}
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	{% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="og:image" content="{% block ogimage %}http://{{ request.get_host }}/static/img/favimage.png{% endblock %}"/>
+    <meta name="keywords" content="{% block keywords %}{% endblock %}" />
+    <meta name="description" content="{% block description %}{% endblock %}" />
+
+    <link rel="shortcut icon" href="{{ STATIC_URL }}dist/img/favicon.ico" >
+    <link href="https://fonts.googleapis.com/css?family=Arimo:400,700&amp;subset=cyrillic" rel="stylesheet">
+
+    {% block styles %}
+        {% if not debug %}
+            <link rel="stylesheet" href="/static/dist/styles.min.css">
+        {% endif %}
+    {% endblock styles %}
+    
+    {% block scripts %}
+        <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+        <script src="{% url 'js_reverse' %}" type="text/javascript"></script>
+        {% if debug %}
+            <script src='http://localhost:8080/static/dist/bundle.js'></script>
+        {% else %}
+            <script src='/static/dist/bundle.min.js'></script>
+        {% endif %}
+        {% init_block %}
+    {% endblock scripts %}
+
+    <title>{% block title %}Азотно-кислородная станция АО "БелЗАН"{% endblock %}</title>
+
+</head>
+
+<body>
+	{% block page %}
+	{% endblock %}
+</body>
+</html>

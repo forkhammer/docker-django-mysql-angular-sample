@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load tags %}
+
+{% block page %}
+    <div class="header">
+        <div class="container">
+            <div class="row header__row">
+            </div>
+        </div>
+
+    </div>
+    {% block breadcrumbs %}
+        <div class="breadcrumb__wrapper">
+            {% include "block/breadcrumbs.html" %}
+        </div>
+    {% endblock breadcrumbs %}
+    <div class="page-content">
+        {% block page_content %}
+        {% endblock page_content %}
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                
+            </div>
+        </div>
+    </div>
+{% endblock page %}
