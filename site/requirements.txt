@@ -9,7 +9,6 @@ crc16==0.1.1
 Django==1.11
 django-angular==0.8.4
 django-appconf==1.0.2
-django-celery==3.2.1
 django-celery-email==1.1.5
 django-ckeditor==5.2.1
 django-configurations==2.0
@@ -35,3 +34,7 @@ six==1.10.0
 sqlparse==0.2.3
 Unidecode==0.4.20
 wrapt==1.10.10
+django-celery-results
+django-bootstrap-pagination
+django-breadcrumbs
+
