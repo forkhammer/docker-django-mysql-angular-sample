@@ -17,3 +17,4 @@ services:
      - DJANGO_CONFIGURATION=Prod
      - DJANGO_SETTINGS_MODULE=main.settings
      - PYTHONUNBUFFERED=1
+    restart: always
